@@ -7,7 +7,9 @@ This code encrypts text into the RGB values for each pixel in the image in such 
 Written in Python, along with CSS and HTML for the front end. Output files must be .png images. 
 
 Currently in progress: <br>
-*Huffman Encoding to compress text before encryption and then decompress it after. Based on initial test runs, this cuts down thenumber of bytes by 45%.
+<ul>
+<l1>Huffman Encoding to compress text before encryption and then decompress it after. Based on initial test runs, this cuts down thenumber of bytes by 45%.
+</ul>
 
 # Required Libraries
 
