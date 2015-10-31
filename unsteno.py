@@ -15,7 +15,7 @@ def decode(picture_name):
     while y < limity:
         x = 0
         while x < limitx:
-            bit_list.append(pixel_array[x, y][0] % 2)
+            bit_list.append(picture_file.getpixel((x,y))[0] % 2)
             #print(x, y)
             x += 1
         y += 1
@@ -23,6 +23,6 @@ def decode(picture_name):
         message += str(bit)
     return message
 
-m = decode('cat_secret.jpg')
+m = decode('cat_secret.png')
 print(m[:16])
     

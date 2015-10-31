@@ -12,6 +12,7 @@ def bits_code(code):
     return eight_code
 
 bits = bits_code('he')
+print(bits)
 
 image = Image.open('cat.jpg')
 im = image.load()
@@ -34,4 +35,4 @@ for bit in bits:
             raise IndexError("image is not large enough")
     
 
-image.save('cat_secret.jpg')
+image.save('cat_secret.png')
