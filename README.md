@@ -13,10 +13,10 @@ Written in Python, along with CSS and HTML for the front end. Output files must 
 
 # Soruce Files
 
-1) csua_frontend - All required files for the front end.
-2) cat.jpg - Test file for input.
-3) frontend.py - No longer supported.
-4) open_read_file.py - Provides reading and writing to files.
-5) secret.txt - Sample input file.
-6) steno.py - Main stenography file. Self promtping - run through command line.
-7) unsteno.py - Main reverse stenography file. Self prompting - run through command line. 
+1) csua_frontend - All required files for the front end. <br>
+2) cat.jpg - Test file for input. <br>
+3) frontend.py - No longer supported. <br>
+4) open_read_file.py - Provides reading and writing to files. <br>
+5) secret.txt - Sample input file. <br>
+6) steno.py - Main stenography file. Self promtping - run through command line. <br>
+7) unsteno.py - Main reverse stenography file. Self prompting - run through command line.
