@@ -1,6 +1,8 @@
 from PIL import Image, ImageFilter
 from steno import update_location
 from cryptography.fernet import Fernet
+from pip._vendor.distlib.compat import raw_input
+
 MAX_MESSAGE_LENGTH = 30
 
 def decode(picture_name):
@@ -65,9 +67,16 @@ def get_message_length(picturefile):
     return int(binary_string, 2)
 
 if(__name__ == '__main__'):
-    s = decode('result.png')
+    
+    image_path = raw_input('Enter path of image: ')
+    image_name = raw_input('Enter image file name: ')
+
+    s = decode(image_path + image_name)
     aaa = code_bits(s)
-    cipher_suite = Fernet(b'thJZ-plXxpLke0VtSnOhB_zqedW6kQZt4PsHWqh0cRg=')
+    
+    key = raw_input('Enter key here: \n')
+    
+    cipher_suite = Fernet(key.encode('utf-8'))
     print(cipher_suite.decrypt(aaa.encode('utf-8')).decode('utf-8'))
 
     

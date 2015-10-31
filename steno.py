@@ -1,6 +1,7 @@
 from PIL import Image
 from open_read_file import read_file
 from cryptography.fernet import Fernet
+from pip._vendor.distlib.compat import raw_input
 MAX_MESSAGE_LENGTH = 30
 
 def bits_code(message):
@@ -94,10 +95,27 @@ def encode_bits(bits,im,x_size,y_size):
  
 if(__name__ == '__main__'):
     
-    s = read_file('secret.txt')
+    message_path = raw_input('Enter path of message: ')
+    message_name = raw_input('Enter file name containing message: ')
+    
+    try:
+        s = read_file(message_path + message_name)
+    except FileNotFoundError as err:
+        print("There is no such path or file")
+        pass
+    
+    picture_path = raw_input('Enter path for pictures: ')
+    input_name =  raw_input('Enter name of input file: ')
+    output_name =  raw_input('Enter name of output file: ')
+    
+    
     key = Fernet.generate_key()
     cipher_suite = Fernet(key)
-    print(key)
-    encodes('cat.jpg', 'result.png', cipher_suite.encrypt(s.encode('utf-8')).decode('utf-8'))    
- 
+    try:
+        encodes(picture_path+input_name, picture_path+output_name, cipher_suite.encrypt(s.encode('utf-8')).decode('utf-8'))    
+    except FileNotFoundError as err:
+        print("There is no such path or file")
+        pass
+    
+    print("Stenography successful, here is your key: " + str(key.decode('utf-8')))
 
