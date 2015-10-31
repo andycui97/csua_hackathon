@@ -8,7 +8,7 @@ Written in Python, along with CSS and HTML for the front end. Output files must 
 
 Currently in progress: <br>
 <ul>
-<l1>Huffman Encoding to compress text before encryption and then decompress it after. Based on initial test runs, this cuts down thenumber of bytes by 45%.
+<li>Huffman Encoding to compress text before encryption and then decompress it after. Based on initial test runs, this cuts down thenumber of bytes by 45%.
 </ul>
 
 # Required Libraries
