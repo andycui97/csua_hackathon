@@ -1,6 +1,17 @@
 from PIL import Image
 
-bits = [1,1,0,1,0,0,0,1,1,0,0,1,0,1]
+def bits_code(code):
+    """Converts a string into an array of the bit code"""
+    eight_code = []
+    for i in code:
+        bit  = bin(ord(i))[2:]
+        print(bit)
+        bit = '00000000'[len(bit):] + bit
+        print(bit)
+        eight_code.extend([int(b) for b in bit])
+    return eight_code
+
+bits = bits_code('he')
 
 image = Image.open('cat.jpg')
 im = image.load()
@@ -21,9 +32,6 @@ for bit in bits:
         y+=1
         if y>y_size:
             raise IndexError("image is not large enough")
-        
-  
-    
     
 
 image.save('cat_secret.jpg')
