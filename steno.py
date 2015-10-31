@@ -1,4 +1,6 @@
 from PIL import Image
+from open_read_file import read_file
+MAX_MESSAGE_LENGTH = 30
 
 def bits_code(message):
     """Converts a string into an array of the bit code
@@ -25,18 +27,23 @@ def encodes(picturein_pn,pictureout_pn,message):
     x_size, y_size = image.size
     im = image.load()
     
+    message_length = len(message)
+    
+    encode_length(message_length,im)
+ 
     bits = bits_code(message)
-        
-    x,y = 0,0
-    for bit in bits:
-        # im[x,y] returns a tuple (r,g,b)
-        r,g,b = im[x,y][0], im[x,y][1],im[x,y][2] # update rgb values 
-        
-        #encoding (currently last bit of red)
-        im[x,y] = (r-r%2 + bit,g,b)
-        
-        x,y = update_location(x,y,x_size,y_size)
-       
+    
+    encode_bits(bits,im,x_size,y_size)
+    
+    """
+    # to be used for testing
+    print(bits)
+    for i in range(MAX_MESSAGE_LENGTH//3):
+        print(im[i,0])
+    print()
+    for i in range(32):
+        print(im[i,1])
+    """
     
     image.save(pictureout_pn)
 
@@ -47,12 +54,42 @@ def update_location(x,y, max_x,max_y):
     @return: (x,y) a tuple of the updated x and y values
     """
     x+=1
-    if x>max_x: # if we finish with a row
+    if x>=max_x: # if we finish with a row
         x = 0
         y+=1
-        if y>max_y:
+        if y>=max_y:
             raise IndexError("image is not large enough") # ran out of fucking space   
     return (x,y)   
 
-encodes('cat.jpg', 'cat_secret.png', 'he')    
+def encode_length(message_length, im):
+    
+    message_length_bitstring = ('0'*MAX_MESSAGE_LENGTH)[len(bin(message_length)[2:]):] + bin(message_length)[2:]
+    for i in range(MAX_MESSAGE_LENGTH//3):
+        r,g,b = im[i,0][0], im[i,0][1],im[i,0][2]
+        r,g,b = (r-r%2 + int(message_length_bitstring[3*i]),g-g%2 + int(message_length_bitstring[3*i+1]),b-b%2 + int(message_length_bitstring[3*i+2]))
+        im[i,0] = (r,g,b)
+    
+def encode_bits(bits,im,x_size,y_size):
+    
+    x,y = 0,1
+    
+    len_bits = len(bits)
+    
+    # we need 3 extra bits to fall back on dwai about it
+    bits.append(0)
+    bits.append(0)
+    bits.append(0)
+     
+    for i in range(len_bits//3+1):     
+        # im[x,y] returns a tuple (r,g,b)
+        r,g,b = im[x,y][0], im[x,y][1],im[x,y][2] # update rgb values 
+        
+        #encoding (currently uses all three color values)
+        im[x,y] = (r-r%2 + bits[3*i],g-g%2 + bits[3*i+1],b-b%2 + bits[3*i+2])
+
+        
+        x,y = update_location(x,y,x_size,y_size)
+       
+    
+encodes('cat.jpg', 'cat_secret.png', read_file('secret.txt'))    
 
