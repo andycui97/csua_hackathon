@@ -23,6 +23,14 @@ def decode(picture_name):
         message += str(bit)
     return message
 
+def code_bits(bits):
+    string_code = []
+    for b in range(len(bits) // 8):
+        byte = bits[b*8:(b+1)*8]
+        string_code.append(chr(int(''.join([str(bit) for bit in byte]), 2)))
+    return ''.join(string_code)
+
+
 m = decode('cat_secret.png')
 print(m[:16])
     
