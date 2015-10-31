@@ -2,9 +2,12 @@
 
 # Description
 
-This code encrypts text into the RGB values for each pixel in the image in such a way that it is not visibile to the human eye, but can be decrypted to recover the original text. The decryption requires a key provided by the encryptor. If the key is lost, the text is unrecoverable. 
+This code encrypts text into the RGB values for each pixel in the image in such a way that it is not visibile to the human eye, but can be decrypted to recover the original text. The decryption requires a key provided by the encryptor. If the key is lost, the text is unrecoverable.
 
 Written in Python, along with CSS and HTML for the front end. Output files must be .png images. 
+
+Currently in progress: <br>
+1) Huffman Encoding to compress text before encryption and then decompress it after. Based on initial test runs, this cuts down thenumber of bytes by 45%.
 
 # Required Libraries
 
