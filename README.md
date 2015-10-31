@@ -4,6 +4,8 @@
 
 This code encrypts text into the RGB values for each pixel in the image in such a way that it is not visibile to the human eye, but can be decrypted to recover the original text. The decryption requires a key provided by the encryptor. If the key is lost, the text is unrecoverable.
 
+The demo application of this code encrypts the entire text of books into the image of their cover, which can then be decrypted on any device provided that you have the key generated at encryption. 
+
 Written in Python, along with CSS and HTML for the front end. Output files must be .png images. 
 
 Currently in progress: <br>
@@ -16,7 +18,7 @@ Currently in progress: <br>
 1) [Pillow 3.0.0](https://pypi.python.org/pypi/Pillow/3.0.0) <br>
 2) [Cryptogrphy 1.2](https://cryptography.io/en/latest/)
 
-# Soruce Files
+# Source Files
 
 1) csua_frontend - All required files for the front end. <br>
 2) cat.jpg - Test file for input. <br>
