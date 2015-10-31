@@ -1,5 +1,6 @@
 from PIL import Image
 from open_read_file import read_file
+from cryptography.fernet import Fernet
 MAX_MESSAGE_LENGTH = 30
 
 def bits_code(message):
@@ -90,6 +91,13 @@ def encode_bits(bits,im,x_size,y_size):
         
         x,y = update_location(x,y,x_size,y_size)
        
+ 
+if(__name__ == '__main__'):
     
-encodes('cat.jpg', 'cat_secret.png', read_file('secret.txt'))    
+    s = read_file('secret.txt')
+    key = Fernet.generate_key()
+    cipher_suite = Fernet(key)
+    print(key)
+    encodes('cat.jpg', 'result.png', cipher_suite.encrypt(s.encode('utf-8')).decode('utf-8'))    
+ 
 

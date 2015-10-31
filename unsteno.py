@@ -1,6 +1,7 @@
 from PIL import Image, ImageFilter
-MAX_MESSAGE_LENGTH = 30
 from steno import update_location
+from cryptography.fernet import Fernet
+MAX_MESSAGE_LENGTH = 30
 
 def decode(picture_name):
     """Takes in a picture name, and returns a list with the bits of the secret message.
@@ -63,8 +64,10 @@ def get_message_length(picturefile):
         binary_string += str(bit)
     return int(binary_string, 2)
 
-s = decode('cat_secret.png')
-aaa = code_bits(s)
-print(aaa)
+if(__name__ == '__main__'):
+    s = decode('result.png')
+    aaa = code_bits(s)
+    cipher_suite = Fernet(b'thJZ-plXxpLke0VtSnOhB_zqedW6kQZt4PsHWqh0cRg=')
+    print(cipher_suite.decrypt(aaa.encode('utf-8')).decode('utf-8'))
 
     
