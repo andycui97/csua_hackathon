@@ -81,7 +81,7 @@ if(__name__ == '__main__'):
     cipher_suite = Fernet(key.encode('utf-8'))
     
     save_path = raw_input('Enter path for save file: ')
-    save_name = raw_input('Enter file name for save: ')
+    save_name = raw_input('Enter file name for save (<filename>.txt): ')
     
     write_file(save_path + save_name, cipher_suite.decrypt(aaa.encode('utf-8')).decode('utf-8'))
 
