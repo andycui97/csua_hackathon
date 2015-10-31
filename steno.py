@@ -35,8 +35,8 @@ def encodes(picturein_pn,pictureout_pn,message):
     
     encode_bits(bits,im,x_size,y_size)
     
-    """
-    # to be used for testing
+    
+    """# to be used for testing
     print(bits)
     for i in range(MAX_MESSAGE_LENGTH//3):
         print(im[i,0])
