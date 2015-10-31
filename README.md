@@ -1,4 +1,5 @@
-# csua_hackathon
+# Bookshelf
+Authors: Mehdi Kazi, Andy Cui, Oliver Dong, Alex Krentsel
 
 # Description
 
