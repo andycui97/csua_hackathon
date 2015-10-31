@@ -8,7 +8,7 @@ Written in Python, along with CSS and HTML for the front end. Output files must 
 
 # Required Libraries
 
-1) [Pillow 3.0.0](https://pypi.python.org/pypi/Pillow/3.0.0)
+1) [Pillow 3.0.0](https://pypi.python.org/pypi/Pillow/3.0.0) <br>
 2) [Cryptogrphy 1.2](https://cryptography.io/en/latest/)
 
 # Soruce Files
