@@ -17,7 +17,7 @@ Currently in progress: <br>
 # Required Libraries
 
 1) [Pillow 3.0.0](https://pypi.python.org/pypi/Pillow/3.0.0) <br>
-2) [Cryptogrphy 1.2](https://cryptography.io/en/latest/)
+2) [Cryptography 1.2](https://cryptography.io/en/latest/)
 
 # Source Files
 
@@ -26,5 +26,5 @@ Currently in progress: <br>
 3) frontend.py - No longer supported. <br>
 4) open_read_file.py - Provides reading and writing to files. <br>
 5) secret.txt - Sample input file. <br>
-6) steno.py - Main stenography file. Self promtping - run through command line. <br>
+6) steno.py - Main stenography file. Self prompting - run through command line. <br>
 7) unsteno.py - Main reverse stenography file. Self prompting - run through command line.
