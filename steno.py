@@ -111,11 +111,14 @@ if(__name__ == '__main__'):
     
     key = Fernet.generate_key()
     cipher_suite = Fernet(key)
+    
+    #print(cipher_suite.encrypt(s.encode('utf-8')))
+    
     try:
         encodes(picture_path+input_name, picture_path+output_name, cipher_suite.encrypt(s.encode('utf-8')).decode('utf-8'))    
     except FileNotFoundError as err:
         print("There is no such path or file")
         pass
     
-    print("Stenography successful, here is your key: " + str(key.decode('utf-8')))
+    print("Stenography successful, here is your key (please save it): " + str(key.decode('utf-8')))
 

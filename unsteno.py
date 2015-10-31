@@ -2,6 +2,7 @@ from PIL import Image, ImageFilter
 from steno import update_location
 from cryptography.fernet import Fernet
 from pip._vendor.distlib.compat import raw_input
+from open_read_file import write_file
 
 MAX_MESSAGE_LENGTH = 30
 
@@ -70,13 +71,18 @@ if(__name__ == '__main__'):
     
     image_path = raw_input('Enter path of image: ')
     image_name = raw_input('Enter image file name: ')
+    print("currently decoding, please be patient...")
 
-    s = decode(image_path + image_name)
+    s = decode(image_path +image_name)
     aaa = code_bits(s)
     
     key = raw_input('Enter key here: \n')
     
     cipher_suite = Fernet(key.encode('utf-8'))
-    print(cipher_suite.decrypt(aaa.encode('utf-8')).decode('utf-8'))
+    
+    save_path = raw_input('Enter path for save file: ')
+    save_name = raw_input('Enter file name for save: ')
+    
+    write_file(save_path + save_name, cipher_suite.decrypt(aaa.encode('utf-8')).decode('utf-8'))
 
     
