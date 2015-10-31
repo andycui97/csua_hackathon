@@ -24,7 +24,7 @@ def code_bits(bits):
     @return: '<secret message>' a string that was the hidden message
     """
     string_code = []
-    for b in range(len(bits) // 8):
+    for b in range(len(bits)//8):
         byte = bits[b*8:(b+1)*8] #decryption algorithm
         string_code.append(chr(int(''.join([str(bit) for bit in byte]), 2)))
     return ''.join(string_code)
@@ -38,10 +38,11 @@ def picture_traverse(picturefile): # temporary y_max implementation because test
     x_max = picturefile.size[0]*3
     value_list = []
     y_max = message_length*8 // x_max + 1
-    for y in range(1, y_max):
+    for y in range(1, y_max + 1):
         for x in range(picturefile.size[0]):
             value_list += list(picturefile.getpixel((x,y)))
-    bit_list = [value_list[character_num] % 2 for character_num in range(message_length)]  # take only the required number of bits
+    bit_list = [value_list[character_num] % 2 for character_num in range(message_length*8)]
+      # take only the required number of bits
     return bit_list
 
 def get_message_length(picturefile):
@@ -63,6 +64,7 @@ def get_message_length(picturefile):
     return int(binary_string, 2)
 
 s = decode('cat_secret.png')
-print(code_bits(s))
+aaa = code_bits(s)
+print(aaa)
 
     
